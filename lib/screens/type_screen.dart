@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:platform_channels_example/screens/event_channels.dart';
+import 'package:platform_channels_example/screens/get_battery.dart';
 import 'package:platform_channels_example/screens/method_channels_example.dart';
 
 class TypeScreen extends StatelessWidget {
@@ -50,6 +51,29 @@ class TypeScreen extends StatelessWidget {
               },
               child: const Text(
                 "Event Channels",
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Divider(),
+            const SizedBox(
+              height: 10,
+            ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return BatteryScreen();
+                    },
+                  ),
+                );
+              },
+              child: const Text(
+                "Battery Percentage",
                 style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
               ),
             )

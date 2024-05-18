@@ -1,11 +1,13 @@
 package com.example.platform_channels_example
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.embedding.android.FlutterActivity
+import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.EventChannel
 import android.os.Bundle
 import java.util.Timer
 import java.util.TimerTask
+import android.content.Context
 
 import android.content.ContextWrapper;
 import android.content.Intent;
@@ -72,10 +74,24 @@ class MainActivity: FlutterActivity() {
                     }
                 }
         )
-    }
 
+        // Battery Percentage
+        MethodChannel(flutterEngine!!.dartExecutor.binaryMessenger, "BatteryCount").setMethodCallHandler { call, result ->
+
+            if(call.method == "Battery"){
+                val batteryManager = context.getSystemService(Context.BATTERY_SERVICE) as BatteryManager
+                val batteryLevel = batteryManager.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY)
+                result.success(batteryLevel)
+            }
+
+        }
+
+
+    }
     override fun onDestroy() {
         super.onDestroy()
         timer?.cancel()
     }
+
+
 }

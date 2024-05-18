@@ -1,0 +1,10 @@
+import 'package:pigeon/pigeon.dart';
+
+class BatteryResponse {
+  int? batteryLevel;
+}
+
+@HostApi()
+abstract class BatteryApi {
+  BatteryResponse getBatteryLevel();
+}

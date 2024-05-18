@@ -24,7 +24,6 @@ class _CounterScreenState extends State<CounterScreen> {
     }
   }
 
-
   void _decrementCounter() async {
     try {
       final int result =
@@ -43,6 +42,7 @@ class _CounterScreenState extends State<CounterScreen> {
       appBar: AppBar(
         title: const Text('Method Channel Counter'),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
